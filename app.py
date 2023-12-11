@@ -9,7 +9,6 @@ import io
 saved_model_path = 'flower_recognition_model.h5'
 model = load_model(saved_model_path)
 
-# Define the target size for image preprocessing
 img_size = (224, 224)
 
 # Function to preprocess an image for prediction
@@ -38,3 +37,7 @@ async def predict_flower(file: UploadFile = File(...)):
     # Return the prediction results
     return JSONResponse(content={"predicted_class": flower_classes[predicted_class],
                                  "probability": float(predictions[0, predicted_class])})
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
