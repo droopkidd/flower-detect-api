@@ -1,1 +1,0 @@
-# flower-detect-api
